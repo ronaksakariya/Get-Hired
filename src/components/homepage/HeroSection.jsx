@@ -20,35 +20,35 @@ const HeroSection = () => {
     <div>
       <section className="flex items-center justify-center  pt-16 sm:pt-12 pb-8 sm:pb-10">
         <div className="mx-auto max-w-4xl text-center">
-          <h1 className="flex flex-col items-center justify-center gradient-title font-extrabold text-4xl sm:text-6xl lg:text-8xl text-white tracking-tighter py-4">
-            Find Your Dream Job
-            <span className="flex items-center gap-2 sm:gap-6">
-              and get
+          <h1 className="flex flex-col items-center justify-center gradient-title font-extrabold text-4xl sm:text-6xl lg:text-8xl text-white tracking-tighter py-4 text-center">
+            <span className="leading-tight">Find Your Dream Job</span>
+            <span className="flex items-center justify-center gap-2 sm:gap-6 mt-2 sm:mt-0 flex-wrap">
+              <span>and get</span>
               <img
                 src="/logo.png"
-                className="h-14 sm:h-24 lg:h-32"
+                className="h-12 sm:h-20 md:h-24 lg:h-32 object-contain"
                 alt="Hirrd Logo"
               />
             </span>
           </h1>
 
-          <p className="mt-6 sm:mt-8 text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
+          <p className="mt-4 sm:mt-8 text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto px-4 sm:px-0">
             Explore thousands of job listings or find the perfect candidate
           </p>
 
-          <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-5">
-            <Link to="/jobs">
+          <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full mx-auto px-4 sm:px-0 max-w-sm sm:max-w-none">
+            <Link to="/jobs" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="w-52 sm:w-auto px-6 py-8 text-base sm:text-lg font-semibold cursor-pointer bg-blue-600"
+                className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold cursor-pointer bg-blue-600"
               >
                 Find Jobs
               </Button>
             </Link>
-            <Link to="/post-job">
+            <Link to="/post-job" className="w-full sm:w-auto">
               <Button
                 size="lg"
-                className="w-52 sm:w-auto px-6 py-8 text-base sm:text-lg font-semibold  text-white cursor-pointer bg-red-700"
+                className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold text-white cursor-pointer bg-red-700"
               >
                 Post a job
               </Button>
@@ -92,18 +92,18 @@ const HeroSection = () => {
         </Carousel>
       </section>
 
-      <section className="pb-12 sm:pb-16 w-full">
+      <section className="pb-12 sm:pb-16 w-full px-2 sm:px-0">
         <img
           src="/banner.jpeg"
           alt="Hirrd Banner"
-          className="w-full rounded-2xl object-cover shadow-2xl border border-gray-800"
+          className="w-full rounded-xl sm:rounded-2xl object-cover shadow-2xl border border-gray-800 h-48 sm:h-auto"
         />
       </section>
 
-      <section className="pb-12 sm:pb-16 w-full grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <section className="pb-12 sm:pb-16 w-full grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 px-2 sm:px-0">
         <Card className="bg-gray-900 border border-gray-800 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl">
           <CardHeader>
-            <CardTitle className="text-white text-xl font-bold">
+            <CardTitle className="text-white text-lg sm:text-xl font-bold">
               For Job Seekers
             </CardTitle>
           </CardHeader>
@@ -114,7 +114,7 @@ const HeroSection = () => {
 
         <Card className="bg-gray-900 border border-gray-800 hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 shadow-lg hover:shadow-xl">
           <CardHeader>
-            <CardTitle className="text-white text-xl font-bold">
+            <CardTitle className="text-white text-lg sm:text-xl font-bold">
               For Employers
             </CardTitle>
           </CardHeader>
