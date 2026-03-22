@@ -38,7 +38,7 @@ const HeroSection = () => {
           </p>
 
           <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full mx-auto px-4 sm:px-0 max-w-sm sm:max-w-none">
-            <Link to="/jobs" className="w-full sm:w-auto">
+            <Link className="w-full sm:w-auto">
               <Button
                 size="lg"
                 className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold cursor-pointer bg-blue-600 hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(59,130,246,0.3)]"
@@ -46,7 +46,7 @@ const HeroSection = () => {
                 Find Jobs
               </Button>
             </Link>
-            <Link to="/post-job" className="w-full sm:w-auto">
+            <Link className="w-full sm:w-auto">
               <Button
                 size="lg"
                 className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold text-white cursor-pointer bg-red-700 hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(239,68,68,0.3)]"
@@ -115,7 +115,8 @@ const HeroSection = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="relative z-10 text-gray-400 text-base leading-relaxed mt-2">
-            Search and apply for jobs, track applications, and more. Join thousands of professionals finding their dream career path.
+            Search and apply for jobs, track applications, and more. Join
+            thousands of professionals finding their dream career path.
           </CardContent>
           <div className="absolute inset-0 bg-linear-to-br from-blue-600/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
         </Card>
@@ -133,7 +134,8 @@ const HeroSection = () => {
             </CardTitle>
           </CardHeader>
           <CardContent className="relative z-10 text-gray-400 text-base leading-relaxed mt-2">
-            Post jobs, manage applications, and find the best candidates. Streamline your hiring process with our powerful tools.
+            Post jobs, manage applications, and find the best candidates.
+            Streamline your hiring process with our powerful tools.
           </CardContent>
           <div className="absolute inset-0 bg-linear-to-br from-red-600/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
         </Card>
