@@ -32,16 +32,30 @@ const AuthDialog = ({ open, setOpen }) => {
     e.preventDefault();
     setSignInError("");
     setSignInLoading(true);
-    const { error } = await supabase.auth.signInWithPassword({
+    const { data, error } = await supabase.auth.signInWithPassword({
       email: signInEmail,
       password: signInPassword,
     });
-    setSignInLoading(false);
+    
     if (error) {
       setSignInError(error.message);
+      setSignInLoading(false);
     } else {
       setOpen(false);
-      navigate("/onboarding");
+      
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("role")
+        .eq("id", data.user.id)
+        .single();
+
+      if (profile?.role === "recruiter") {
+        navigate("/post-job");
+      } else if (profile?.role === "candidate") {
+        navigate("/jobs");
+      } else {
+        navigate("/onboarding");
+      }
     }
   };
 
@@ -75,9 +89,7 @@ const AuthDialog = ({ open, setOpen }) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent
-        className="p-0 border rounded-2xl sm:max-w-md bg-[#0d1117] border-white/8"
-      >
+      <DialogContent className="p-0 border rounded-2xl sm:max-w-md bg-[#0d1117] border-white/8">
         <div className="px-6 pt-6 pb-5 border-b border-b-white/6">
           <DialogHeader>
             <DialogTitle className="text-2xl font-semibold text-white leading-tight">
@@ -90,9 +102,7 @@ const AuthDialog = ({ open, setOpen }) => {
         </div>
 
         <div className="px-6 pb-6 pt-5">
-          <div
-            className="flex w-full p-1 rounded-xl mb-5 bg-[#161b22]"
-          >
+          <div className="flex w-full p-1 rounded-xl mb-5 bg-[#161b22]">
             <button
               type="button"
               onClick={() => setTab("signin")}
@@ -120,7 +130,10 @@ const AuthDialog = ({ open, setOpen }) => {
           {tab === "signin" && (
             <form onSubmit={handleSignIn} className="flex flex-col gap-4">
               <div className="flex flex-col gap-1.5">
-                <Label htmlFor="signin-email" className="text-xs font-medium text-zinc-400 uppercase tracking-widest">
+                <Label
+                  htmlFor="signin-email"
+                  className="text-xs font-medium text-zinc-400 uppercase tracking-widest"
+                >
                   Email
                 </Label>
                 <Input
@@ -135,7 +148,10 @@ const AuthDialog = ({ open, setOpen }) => {
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <Label htmlFor="signin-password" className="text-xs font-medium text-zinc-400 uppercase tracking-widest">
+                <Label
+                  htmlFor="signin-password"
+                  className="text-xs font-medium text-zinc-400 uppercase tracking-widest"
+                >
                   Password
                 </Label>
                 <Input
@@ -163,18 +179,24 @@ const AuthDialog = ({ open, setOpen }) => {
             </form>
           )}
 
-          {tab === "signup" && (
-            signUpSuccess ? (
+          {tab === "signup" &&
+            (signUpSuccess ? (
               <div className="py-8 text-center flex flex-col items-center gap-3">
-                <p className="text-white font-semibold text-lg">Check your email</p>
+                <p className="text-white font-semibold text-lg">
+                  Check your email
+                </p>
                 <p className="text-zinc-400 text-sm leading-relaxed">
-                  We sent you a confirmation link. Click it to activate your account, then sign in.
+                  We sent you a confirmation link. Click it to activate your
+                  account, then sign in.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSignUp} className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="signup-name" className="text-xs font-medium text-zinc-400 uppercase tracking-widest">
+                  <Label
+                    htmlFor="signup-name"
+                    className="text-xs font-medium text-zinc-400 uppercase tracking-widest"
+                  >
                     Full Name
                   </Label>
                   <Input
@@ -189,7 +211,10 @@ const AuthDialog = ({ open, setOpen }) => {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="signup-email" className="text-xs font-medium text-zinc-400 uppercase tracking-widest">
+                  <Label
+                    htmlFor="signup-email"
+                    className="text-xs font-medium text-zinc-400 uppercase tracking-widest"
+                  >
                     Email
                   </Label>
                   <Input
@@ -204,7 +229,10 @@ const AuthDialog = ({ open, setOpen }) => {
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <Label htmlFor="signup-password" className="text-xs font-medium text-zinc-400 uppercase tracking-widest">
+                  <Label
+                    htmlFor="signup-password"
+                    className="text-xs font-medium text-zinc-400 uppercase tracking-widest"
+                  >
                     Password
                   </Label>
                   <Input
@@ -231,8 +259,7 @@ const AuthDialog = ({ open, setOpen }) => {
                   {signUpLoading ? "Creating account…" : "Create Account"}
                 </Button>
               </form>
-            )
-          )}
+            ))}
         </div>
       </DialogContent>
     </Dialog>
