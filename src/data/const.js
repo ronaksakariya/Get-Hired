@@ -41,3 +41,55 @@ export const faqs = [
       "Your dashboard shows a real-time overview of all applications — including pending, reviewed, and accepted statuses.",
   },
 ];
+
+export const DUMMY_JOBS = [
+  {
+    id: 1,
+    title: "Senior Frontend Engineer",
+    company: "Amazon",
+    logo: "/companies/amazon.svg",
+    location: "Seattle, WA",
+    type: "Full Time",
+    description:
+      "Build the next generation of e-commerce experiences with React and modern web technologies.",
+  },
+  {
+    id: 2,
+    title: "Product Designer",
+    company: "Meta",
+    logo: "/companies/meta.svg",
+    location: "Remote",
+    type: "Remote",
+    description:
+      "Design intuitive and engaging user interfaces for millions of users worldwide.",
+  },
+  {
+    id: 3,
+    title: "Marketing Intern",
+    company: "Google",
+    logo: "/companies/google.webp",
+    location: "San Francisco, CA",
+    type: "Internship",
+    description:
+      "Help grow our user base through innovative marketing campaigns and data analysis.",
+  },
+  {
+    id: 4,
+    title: "Backend Developer",
+    company: "Netflix",
+    logo: "/companies/netflix.png",
+    location: "Los Angeles, CA",
+    type: "Full Time",
+    description:
+      "Scale our streaming infrastructure to handle millions of concurrent users with zero downtime.",
+  },
+];
+
+export const LOCATIONS = [
+  "Seattle, WA",
+  "Remote",
+  "San Francisco, CA",
+  "Los Angeles, CA",
+  "New York, NY",
+];
+export const JOB_TYPES = ["Full Time", "Part Time", "Remote", "Internship"];

@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../ui/button";
+import useAuth from "@/context/useAuth";
+import AuthDialog from "@/components/auth/AuthDialog";
 import { companies, faqs } from "@/data/const";
 import {
   Carousel,
@@ -17,6 +20,9 @@ import {
 import { Search, Building2, ArrowRight } from "lucide-react";
 
 const HeroSection = () => {
+  const { user, role, loading } = useAuth();
+  const [authOpen, setAuthOpen] = useState(false);
+
   return (
     <div>
       <section className="flex items-center justify-center  pt-16 sm:pt-12 pb-8 sm:pb-10">
@@ -38,22 +44,51 @@ const HeroSection = () => {
           </p>
 
           <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full mx-auto px-4 sm:px-0 max-w-sm sm:max-w-none">
-            <Link className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold cursor-pointer bg-blue-600 hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(59,130,246,0.3)]"
-              >
-                Find Jobs
-              </Button>
-            </Link>
-            <Link className="w-full sm:w-auto">
-              <Button
-                size="lg"
-                className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold text-white cursor-pointer bg-red-700 hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(239,68,68,0.3)]"
-              >
-                Post a job
-              </Button>
-            </Link>
+            {!loading && (
+              <>
+                {(!user || role === "candidate") && (
+                  user ? (
+                    <Link to="/jobs" className="w-full sm:w-auto">
+                      <Button
+                        size="lg"
+                        className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold cursor-pointer bg-blue-600 hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(59,130,246,0.3)]"
+                      >
+                        Find Jobs
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      size="lg"
+                      onClick={() => setAuthOpen(true)}
+                      className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold cursor-pointer bg-blue-600 hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(59,130,246,0.3)]"
+                    >
+                      Find Jobs
+                    </Button>
+                  )
+                )}
+                
+                {(!user || role === "recruiter") && (
+                  user ? (
+                    <Link to="/post-job" className="w-full sm:w-auto">
+                      <Button
+                        size="lg"
+                        className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold text-white cursor-pointer bg-red-700 hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(239,68,68,0.3)]"
+                      >
+                        Post a job
+                      </Button>
+                    </Link>
+                  ) : (
+                    <Button
+                      size="lg"
+                      onClick={() => setAuthOpen(true)}
+                      className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold text-white cursor-pointer bg-red-700 hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(239,68,68,0.3)]"
+                    >
+                      Post a job
+                    </Button>
+                  )
+                )}
+              </>
+            )}
           </div>
         </div>
       </section>
@@ -153,6 +188,8 @@ const HeroSection = () => {
           ))}
         </Accordion>
       </section>
+
+      <AuthDialog open={authOpen} setOpen={setAuthOpen} />
     </div>
   );
 };
