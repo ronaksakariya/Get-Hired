@@ -135,7 +135,7 @@ const HeroSection = () => {
         <img
           src="/banner.png"
           alt="Hirrd Banner"
-          className="w-full rounded-xl sm:rounded-2xl object-cover shadow-2xl border border-gray-800 h-48 sm:h-auto"
+          className="w-full rounded-xl sm:rounded-2xl object-cover shadow-2xl border border-gray-800 h-48 sm:h-auto hover:scale-105 transition-all duration-300"
         />
       </section>
 

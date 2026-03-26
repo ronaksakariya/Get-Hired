@@ -22,6 +22,10 @@ const JobDetails = () => {
   const [applicationStatus, setApplicationStatus] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     let isMounted = true;
     const fetchJob = async () => {
       try {
