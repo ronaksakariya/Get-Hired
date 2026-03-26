@@ -5,6 +5,7 @@ import OnboardingPage from "./pages/OnboardingPage";
 import Jobs from "./pages/Jobs";
 import JobDetails from "./pages/JobDetails";
 import PostJob from "./pages/PostJob";
+import MyApplications from "./pages/MyApplications";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 const router = createBrowserRouter([
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute allowedRole="recruiter">
             <PostJob />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/my-applications",
+        element: (
+          <ProtectedRoute allowedRole="candidate">
+            <MyApplications />
           </ProtectedRoute>
         ),
       },

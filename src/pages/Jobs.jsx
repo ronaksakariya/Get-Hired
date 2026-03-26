@@ -146,7 +146,7 @@ const Jobs = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredJobs.map((job) => (
-            <JobCard key={job.id} job={job} user={user} role={role} />
+            <JobCard key={job.id} job={job} user={user} role={role} onJobDeleted={(id) => setJobs(prev => prev.filter(j => j.id !== id))} />
           ))}
         </div>
       )}

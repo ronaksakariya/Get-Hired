@@ -46,8 +46,8 @@ const HeroSection = () => {
           <div className="mt-10 sm:mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full mx-auto px-4 sm:px-0 max-w-sm sm:max-w-none">
             {!loading && (
               <>
-                {(!user || role === "candidate") && (
-                  user ? (
+                {(!user || role === "candidate" || role === "recruiter") &&
+                  (user ? (
                     <Link to="/jobs" className="w-full sm:w-auto">
                       <Button
                         size="lg"
@@ -64,11 +64,21 @@ const HeroSection = () => {
                     >
                       Find Jobs
                     </Button>
-                  )
+                  ))}
+
+                {user && role === "candidate" && (
+                  <Link to="/my-applications" className="w-full sm:w-auto">
+                    <Button
+                      size="lg"
+                      className="w-full sm:w-auto px-8 py-6 sm:py-8 text-base sm:text-lg font-semibold cursor-pointer bg-red-600 text-white hover:-translate-y-2 hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(59,130,246,0.3)]"
+                    >
+                      My Applications
+                    </Button>
+                  </Link>
                 )}
-                
-                {(!user || role === "recruiter") && (
-                  user ? (
+
+                {(!user || role === "recruiter") &&
+                  (user ? (
                     <Link to="/post-job" className="w-full sm:w-auto">
                       <Button
                         size="lg"
@@ -85,8 +95,7 @@ const HeroSection = () => {
                     >
                       Post a job
                     </Button>
-                  )
-                )}
+                  ))}
               </>
             )}
           </div>
@@ -124,7 +133,7 @@ const HeroSection = () => {
 
       <section className="pb-12 sm:pb-16 w-full px-2 sm:px-0">
         <img
-          src="/banner.jpeg"
+          src="/banner.png"
           alt="Hirrd Banner"
           className="w-full rounded-xl sm:rounded-2xl object-cover shadow-2xl border border-gray-800 h-48 sm:h-auto"
         />

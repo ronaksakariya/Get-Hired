@@ -51,7 +51,7 @@ const AuthDialog = ({ open, setOpen }) => {
         .single();
 
       if (profile?.role === "recruiter") {
-        navigate("/post-job");
+        navigate("/");
       } else if (profile?.role === "candidate") {
         navigate("/jobs");
       } else {
@@ -144,7 +144,7 @@ const AuthDialog = ({ open, setOpen }) => {
                   required
                   value={signInEmail}
                   onChange={(e) => setSignInEmail(e.target.value)}
-                  className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8"
+                  className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8 [&:-webkit-autofill]:[transition:background-color_5000s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                 />
               </div>
 
@@ -162,7 +162,7 @@ const AuthDialog = ({ open, setOpen }) => {
                   required
                   value={signInPassword}
                   onChange={(e) => setSignInPassword(e.target.value)}
-                  className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8"
+                  className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8 [&:-webkit-autofill]:[transition:background-color_5000s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                 />
               </div>
 
@@ -207,7 +207,7 @@ const AuthDialog = ({ open, setOpen }) => {
                     required
                     value={signUpName}
                     onChange={(e) => setSignUpName(e.target.value)}
-                    className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8"
+                    className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8 [&:-webkit-autofill]:[transition:background-color_5000s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                   />
                 </div>
 
@@ -225,7 +225,7 @@ const AuthDialog = ({ open, setOpen }) => {
                     required
                     value={signUpEmail}
                     onChange={(e) => setSignUpEmail(e.target.value)}
-                    className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8"
+                    className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8 [&:-webkit-autofill]:[transition:background-color_5000s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                   />
                 </div>
 
@@ -244,7 +244,7 @@ const AuthDialog = ({ open, setOpen }) => {
                     minLength={6}
                     value={signUpPassword}
                     onChange={(e) => setSignUpPassword(e.target.value)}
-                    className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8"
+                    className="h-11 rounded-xl text-white placeholder:text-zinc-500 focus-visible:ring-0 focus-visible:border-blue-500 bg-[#161b22] border border-white/8 [&:-webkit-autofill]:[transition:background-color_5000s_ease-in-out_0s] [&:-webkit-autofill]:[-webkit-text-fill-color:white]"
                   />
                 </div>
 
